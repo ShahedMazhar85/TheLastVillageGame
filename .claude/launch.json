@@ -1,0 +1,13 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "village-tests",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "tests/serve.py"
+      ],
+      "port": 8765
+    }
+  ]
+}
