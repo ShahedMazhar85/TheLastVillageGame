@@ -1,0 +1,76 @@
+THE LAST VILLAGE - TECH STACK
+=============================
+
+Author: Md Majharul Islam
+
+
+OVERVIEW
+--------
+The game is plain HTML, CSS and JavaScript that runs directly in the
+browser. There is no framework, no game engine, no build step and no
+package manager.
+
+
+LANGUAGES
+---------
+  HTML5          Page structure, start and end screens (index.html)
+  CSS3           Styling for the screens and buttons (inside index.html)
+  JavaScript     All game code (js/*.js), modern ES2020 syntax,
+                 loaded as plain <script> files so it works from file://
+
+
+BROWSER APIs USED
+-----------------
+  Canvas 2D API           All game drawing (world, units, effects, HUD)
+  Web Audio API           Sound effects, generated in code (no audio files)
+  requestAnimationFrame   The main game loop (about 60 frames per second)
+  Keyboard / mouse events WASD movement, mouse aim, clicking to shoot/upgrade
+  devicePixelRatio        Sharp drawing on high-resolution (Retina) screens
+
+
+ASSETS
+------
+  Graphics   None as files. Everything is drawn with code on the canvas.
+  Icons      Small inline SVGs on the start screen.
+  Fonts      Google Fonts: Cinzel (title) and Nunito (text).
+             Falls back to system fonts when offline.
+  Sounds     None as files. Generated with the Web Audio API.
+
+
+CODE STRUCTURE
+--------------
+  index.html       Page, styles, and the script tags
+  js/config.js     Game settings (prices, enemy stats, difficulty)
+  js/util.js       Math helpers and a seedable random number generator
+  js/sim.js        Game rules and state (no drawing, no page access)
+  js/render.js     Drawing on the canvas
+  js/audio.js      Sound effects
+  js/main.js       Input, game flow, main loop
+
+Each file exposes one global object (Sim, Render, Sound) or plain
+helpers, and they load in the order listed in index.html.
+
+
+TESTING
+-------
+  tests/index.html   Browser test page
+  tests/unit.js      Unit tests for the game rules
+  tests/golden.js    Recorded results used to detect behaviour changes
+  tests/serve.py     Small Python 3 web server for running the tests
+
+  Run:  python3 tests/serve.py
+  Open: http://localhost:8765/tests/
+
+
+TOOLS
+-----
+  Git                  Version control
+  Python 3             Only for the local test server
+  Chrome / Edge /      To play and test the game
+  Firefox
+  Any text editor      To edit the code
+
+
+REQUIREMENTS TO PLAY
+--------------------
+A modern web browser (Chrome, Edge or Firefox). Nothing to install.
